@@ -5,30 +5,24 @@ I ( Brad Phelan ) no longer actively develop this project but I will accept
 reasonable pull requests. This project is looking for a home :)
 
 
-Jasminerice
-===========
+Mocha-Rice
+==========
 
-
-
-Utilizing [Jasmine](http://pivotal.github.com/jasmine/) and taking full advantage
-of the Rails 3.1 asset pipeline. Jasminerice removes any excuse YOU have for
-not testing your out of control sprawl of CoffeeScript files.
-This project rocks and uses the MIT-LICENSE.
-
-Headless Testing
-----------------
-
-See [guard-jasmine](https://github.com/netzpirat/guard-jasmine) for details.
+Thanks to Brad Phelan's work on mocha-rice, I'm using his gem as a starting
+point to make a similar gem, but with Mocha instead. I know that mocha_rails
+already exists, but I didn't like how the assets were part of the release.
+Looking to improve on this by using npm_assets to load the Mocha dependencies
+dynamically.
 
 Installation
 ------------
 
-This gem has been tested and run with Rails 3.1 and 3.2. Just include it in
-your `Gemfile`:
+This Gem was developed on Rails 3.2.11 so should probably work on 3.2.x, don't
+know about 3.1.x.
 
 ```ruby
 group :development, :test do
-  gem "jasminerice"
+  gem "mocha-rice"
 end
 ```
 
@@ -39,14 +33,14 @@ change which groups the gem is included in via the gemfile.
 Optionally, you can run the installer
 
 ```bash
-rails g jasminerice:install
+rails g mocha-rice:install
 ```
 
 This will add the required `spec.js.coffee` together with a sample spec and
 fixture to help get you started.
 
-It will also add a intializer `config/initializers/jasminerice.rb` which
-can be used for easy setup of Jasminerice's options
+It will also add a intializer `config/initializers/mocha-rice.rb` which
+can be used for easy setup of mocha-rice's options
 
 Usage
 -----
@@ -62,7 +56,7 @@ In the case where you need access to all your application javascript assets then
     #=require_tree ./
     #=require_tree ../../app/assets/javascripts
 
-This pulls in all your specs from the `javascripts` directory into Jasmine:
+This pulls in all your specs from the `javascripts` directory into Mocha:
 
 ```bash
 spec/javascripts/*_spec.js.coffee
@@ -93,61 +87,13 @@ describe "Bar", ->
 
 ### Stylesheets
 
-For including stylesheets in your specs, Jasminerice uses `spec/javascripts/spec.css`.
+For including stylesheets in your specs, mocha-rice uses `spec/javascripts/spec.css`.
 Use Sprockets directives to include the right css files:
 
 ```css
 /*
  *= require application
  */
-```
-
-### Fixtures
-
-Jasminerice makes files located in the `spec/javascripts/fixtures` directory available
-as fixture. For example, a file `spec/javascripts/fixtures/baz.html.haml` with the
-following content:
-
-```haml
-%h2 Test Fixture
-%p Using fixtures
-```
-
-is made available under the URL `/jasmine/fixtures/baz`. Since Jasminerice automatically
-makes a patched version of [jasmine-jquery](https://github.com/velesin/jasmine-jquery)
-available in your specs, you can load the `baz` fixture in your spec with:
-
-```coffeescript
-loadFixtures 'baz'
-```
-
-You can also load JSON fixtures, e.g. `spec/javascripts/fixtures/json/bar.json`
-
-```coffeescript
-getJSONFixture('bar')
-```
-
-### Helper Methods
-You can declare Jasminerice::SpecHelper (perhaps put inside lib/) to make helpers available to jasminerice fixtures.
-
-So in your lib directory, create the helper, e.g. `lib/jasminerice/spec_helper.rb`
-
-```ruby
-module Jasminerice
-  module SpecHelper
-
-    def print_a_test
-      "foo"
-    end
-  end
-end
-```
-
-Then you can use it in your fixtures, e.g. `spec/javascripts/fixtures/bar.html.haml`
-
-```haml
-%h1 Here is my helper
-= print_a_test
 ```
 
 ### Start server
@@ -161,7 +107,7 @@ rails s
 Goto
 
 ```bash
-http://localhost:3000/jasmine
+http://localhost:3000/mocha
 ```
 
 and there are your specs.
@@ -169,39 +115,23 @@ and there are your specs.
 ### Asset debugging
 
 You can override your current environment's `config.assets.debug` configuration per request
-by adding `?debug=false` or `?debug=true` to the jasmine path, eg.
+by adding `?debug=false` or `?debug=true` to the mocha path, eg.
 
 ```bash
-http://localhost:3000/jasmine?debug=false
+http://localhost:3000/mocha?debug=false
 ```
 
 This will concatenate all your css and javascript into single file which can improve your
 suite's loading speed significantly.
 
-### Compatibility with Require.js
-
-If you use [Require.js](http://requirejs.org/) in your project and need to load your
-modules in your jasmine specs, there is an option to prevent jasminerice from automatically
-executing the test runner before the modules are defined. This enables you to start the
-execution manually whenever you want in your `spec/javascripts/spec.js.coffee` file:
-
-    #= require your/specs/and/other/stuff
-    # at the end of this file add:
-
-    jasmine.rice.autoExecute = false
-
-    define 'jasmine.waitsfor.requirejs', ->
-    require ['jasmine.waitsfor.requirejs'], ->
-      jasmine.getEnv().execute()
-
-The shown example defines a dummy module in require.js that is required immediately on the next
-line. This is a simple hack to wait until require.js has initialized all modules and start the
-jasmine runner after that.
-
-Of course you can use `jasmine.rice.autoExecute = false` also for all other cases where you need
-to control when your specs should be executed!
-
 Author
 ------
+
+* Andrew Hanna (andrew@burn37.com)
+
+Thanks
+------
+
+Thanks to the original author of mocha-rice, which was used as a foundation for this gem.
 
 * Brad Phelan (bradphelan@xtargets.com)
