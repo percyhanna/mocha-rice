@@ -1,4 +1,4 @@
 # desc "Explaining what the task does"
-# task :jasminerice do
+# task :mocha-rice do
 #   # Task goes here
 # end

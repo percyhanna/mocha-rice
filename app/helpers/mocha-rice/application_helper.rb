@@ -1,4 +1,4 @@
-module Jasminerice
+module MochaRice
   module ApplicationHelper
   end
 end

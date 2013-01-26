@@ -1,13 +1,9 @@
-Jasminerice::Engine.routes.draw do
-  resources :spec, :controller => 'spec', :only => [:index] do
-    get "fixtures/*filename", :action => :fixtures
-  end
-  match "fixtures/*filename", :to => "spec#fixtures"
+MochaRice::Engine.routes.draw do
   match "/(:suite)", :to => "spec#index", defaults: { suite: nil }
 end
 
-if Jasminerice.mount
+if MochaRice.mount
   Rails.application.routes.draw do
-    mount Jasminerice::Engine => Jasminerice.mount_at
+    mount MochaRice::Engine => MochaRice.mount_at
   end
 end

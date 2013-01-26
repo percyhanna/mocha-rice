@@ -3,7 +3,7 @@
 Gem::Specification.new do |s|
   s.name        = "mocha-rice"
   s.summary     = "JS/CoffeeScript unit testing for Rails 3.1+ using Mocha"
-  s.description = "Full support for the Rails 3.1 asset pipeline when bdd'ing your coffeescript or javascript using jasmine"
+  s.description = "Full support for the Rails 3.1+ asset pipeline when bdd'ing your JavaScript using Mocha"
   s.files       = `git ls-files`.split "\n"
   s.authors     = ["Andrew Hanna"]
   s.version     = "0.0.1"

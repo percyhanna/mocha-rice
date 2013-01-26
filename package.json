@@ -1,0 +1,16 @@
+{
+	"name": "mocha-rice",
+	"version": "0.0.1",
+	"devDependencies": {
+		"mocha": ">= 1.6.0",
+		"expect.js": ">= 0.2.0",
+		"jquery.expect": "git://github.com/Codecademy/jquery-expect.git",
+		"coverjs": ">= 0.0.1",
+		"JSCovReporter": "git://github.com/percyhanna/JSCovReporter.git",
+		"mocha-phantomjs": ">= 1.0.1"
+	},
+	"scripts": {
+		"coverage": "mkdir -p build/coverage; ./node_modules/coverjs/bin/cover.js --recursive public/javascripts/dashboard/ --output build/coverage",
+		"test": "./node_modules/mocha-phantomjs/bin/mocha-phantomjs -R tap test/mocha.html"
+	}
+}

@@ -1,20 +1,20 @@
-require "jasminerice/engine"
+require "mocha-rice/engine"
 require 'haml'
 
-module Jasminerice
-  # Determine whether or not to mount the Jasminerice engine implicitly. True/False
+module MochaRice
+  # Determine whether or not to mount the MochaRice engine implicitly. True/False
   mattr_accessor :mount
   @@mount = true
 
-  # Specify location at which to mount the engine, default to '/jasmine'
+  # Specify location at which to mount the engine, default to '/mocha'
   mattr_accessor :mount_at
-  @@mount_at = '/jasmine'
+  @@mount_at = '/mocha'
 
   #Specify the path for fixutures, defaults to 'spec/javascripts/fixtures'
   mattr_accessor :fixture_path
   @@fixture_path = 'spec/javascripts/fixtures'
 
-  # Default way to setup Jasminerice. Run rails generate jasminerice:install to create
+  # Default way to setup MochaRice. Run rails generate mocha-rice:install to create
   # a fresh initializer with all configuration values.
   def self.setup
     yield self
