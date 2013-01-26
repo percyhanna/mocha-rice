@@ -1,10 +1,3 @@
-Development Notice
-------------------
-
-I ( Brad Phelan ) no longer actively develop this project but I will accept
-reasonable pull requests. This project is looking for a home :)
-
-
 Mocha-Rice
 ==========
 
