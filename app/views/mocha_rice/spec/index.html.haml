@@ -1,8 +1,9 @@
 %html
   %head
     %title Mocha
-    = stylesheet_link_tag "mocha-rice"
+    = stylesheet_link_tag "mocha"
     = javascript_include_tag "mocha-rice"
     = javascript_include_tag @specsuite, @asset_options.clone
     = csrf_meta_tags
   %body
+    #mocha

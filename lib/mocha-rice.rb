@@ -1,5 +1,6 @@
 require "mocha-rice/engine"
 require 'haml'
+require "npm_assets"
 
 module MochaRice
   # Determine whether or not to mount the MochaRice engine implicitly. True/False

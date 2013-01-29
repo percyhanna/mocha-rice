@@ -1,5 +1,5 @@
 module MochaRice
-  class SpecController <  MochaRice::ApplicationController
+  class SpecController < MochaRice::ApplicationController
     layout false
 
     def index
