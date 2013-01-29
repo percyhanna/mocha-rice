@@ -3,7 +3,7 @@ Mocha-Rice
 
 Thanks to Brad Phelan's work on mocha-rice, I'm using his gem as a starting
 point to make a similar gem, but with Mocha instead. I know that mocha_rails
-already exists, but I didn't like how the assets were part of the release.
+already exists, but I didn't like how the assets were part of the gem itself.
 Looking to improve on this by using npm_assets to load the Mocha dependencies
 dynamically.
 
