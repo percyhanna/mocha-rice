@@ -10,5 +10,4 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.add_dependency( 'haml' )
   s.add_dependency( 'coffee-rails' )
-  s.add_dependency( 'npm_assets', git: "https://github.com/percyhanna/npm_assets.git" )
 end
